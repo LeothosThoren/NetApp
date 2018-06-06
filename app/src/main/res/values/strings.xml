@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NetApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">username</string>
+    <string name="followings">Followings</string>
+    <string name="followers">Followers</string>
+    <string name="public_repos">Public repos</string>
+    <string name="following_number">0</string>
+    <string name="follower_number">0</string>
+    <string name="repos_number">0</string>
+</resources>
