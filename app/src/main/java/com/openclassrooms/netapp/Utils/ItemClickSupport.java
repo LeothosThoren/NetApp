@@ -3,15 +3,13 @@ package com.openclassrooms.netapp.Utils;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by Philippe on 25/12/2017.
- */
 
 public class ItemClickSupport {
     private final RecyclerView mRecyclerView;
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
     private int mItemID;
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

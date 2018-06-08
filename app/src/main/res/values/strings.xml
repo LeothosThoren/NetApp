@@ -10,4 +10,5 @@
     <string name="following_number">0</string>
     <string name="follower_number">0</string>
     <string name="repos_number">0</string>
+    <string name="details_fragment_name">Details</string>
 </resources>

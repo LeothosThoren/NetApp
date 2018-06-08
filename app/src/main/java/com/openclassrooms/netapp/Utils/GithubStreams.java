@@ -11,10 +11,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by Philippe on 21/12/2017.
- */
-
 public class GithubStreams {
 
     public static Observable<List<GithubUser>> streamFetchUserFollowing(String username){
@@ -34,12 +30,13 @@ public class GithubStreams {
                 .timeout(10, TimeUnit.SECONDS);
     }
 
-    public static Observable<GithubUserInfo> streamFetchUserFollowingAndFetchFirstUserInfos(String username){
+    //Few modification : new int parameter to retrieve the position
+    public static Observable<GithubUserInfo> streamFetchUserFollowingAndFetchFirstUserInfos(String username, final int position){
         return streamFetchUserFollowing(username) // 1 - Fetch all users that user follows
                 .map(new Function<List<GithubUser>, GithubUser>() {
                     @Override
                     public GithubUser apply(List<GithubUser> users) throws Exception {
-                        return users.get(0); // 2 - Return the user with the most followers
+                        return users.get(position); // 2 -Here I have updated the value to position
                     }
                 })
                 .flatMap(new Function<GithubUser, Observable<GithubUserInfo>>() {

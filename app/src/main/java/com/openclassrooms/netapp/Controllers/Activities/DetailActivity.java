@@ -1,6 +1,7 @@
 package com.openclassrooms.netapp.Controllers.Activities;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.openclassrooms.netapp.Controllers.Fragments.DetailFragment;
@@ -8,6 +9,8 @@ import com.openclassrooms.netapp.R;
 
 public class DetailActivity extends AppCompatActivity {
 
+    //VARS
+    public static final String POSITION = "POSITION";
     private DetailFragment detailFragment;
 
 
@@ -16,6 +19,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        //Some configurations
+        configureActionBar();
         configureAndShowDetailFragment();
     }
 
@@ -33,6 +38,15 @@ public class DetailActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.activity_detail_frame_layout, detailFragment)
                     .commit();
+        }
+
+    }
+
+    //Action bar with arrow to go back to mainActivity (please check Manifest)
+    private void configureActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 }

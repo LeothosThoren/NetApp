@@ -1,7 +1,7 @@
 package com.openclassrooms.netapp.Controllers.Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.openclassrooms.netapp.Controllers.Fragments.MainFragment;
 import com.openclassrooms.netapp.R;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     // CONFIGURATION
     // -------------------
 
-    private void configureAndShowMainFragment(){
+    private void configureAndShowMainFragment() {
 
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.activity_main_frame_layout);
 

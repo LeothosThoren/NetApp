@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_detail"
     tools:context=".Controllers.Fragments.DetailFragment">
+
+    <!--I LIKE CONSTRAINT LAYOUT-->
     <!--USERS PHOTO-->
     <ImageView
         android:id="@+id/detail_avatar"
@@ -95,7 +98,7 @@
 
     <TextView
         android:id="@+id/detail_followers_nb"
-        android:layout_width="11dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -111,8 +114,8 @@
 
     <TextView
         android:id="@+id/detail_repos_nb"
-        android:layout_width="7dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"

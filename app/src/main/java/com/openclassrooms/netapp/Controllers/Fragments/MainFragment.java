@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,23 +28,25 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
+import static com.openclassrooms.netapp.Controllers.Activities.DetailActivity.POSITION;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment implements GithubUserAdapter.Listener {
 
     // FOR DESIGN
-    @BindView(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
-    @BindView(R.id.fragment_main_swipe_container) SwipeRefreshLayout swipeRefreshLayout;
-
+    @BindView(R.id.fragment_main_recycler_view)
+    RecyclerView recyclerView;
+    @BindView(R.id.fragment_main_swipe_container)
+    SwipeRefreshLayout swipeRefreshLayout;
     //FOR DATA
     private Disposable disposable;
     private List<GithubUser> githubUsers;
     private GithubUserAdapter adapter;
-    public static final String USER = "USER";
-    private static final String TAG = "MainFragment";
 
-    public MainFragment() { }
+    public MainFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,21 +66,15 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     }
 
     // -----------------
-    // MY METHODS
+    // MY METHOD
     // -----------------
 
-    private void startDetailActivity(){
+    private void startDetailActivity(int position) {
         Intent intent = new Intent(getActivity().getBaseContext(), DetailActivity.class);
+        //Before starting activity (and fragment) we store position value
+        intent.putExtra(POSITION, position);
         startActivity(intent);
 
-    }
-
-    private void passDataFragToFrag(String user){
-        DetailFragment frg = new DetailFragment();
-        Bundle arg = new Bundle();
-        arg.putString(USER, user);
-        frg.setArguments(arg);
-        Log.d(TAG, "onItemClicked: " + user);
     }
 
 
@@ -87,18 +82,17 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     // ACTIONS
     // -----------------
 
-    private void configureOnClickRecyclerView(){
+    private void configureOnClickRecyclerView() {
         ItemClickSupport.addTo(recyclerView, R.layout.fragment_main_item)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         GithubUser user = adapter.getUser(position);
-                        Toast.makeText(getContext(), "You clicked on user : "+user.getLogin(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "You clicked on user : " + user.getLogin() + " at position: " + position, Toast.LENGTH_SHORT).show();
 
-                        //First we store the data (user name/login) to pass into the detailFragment
-                        passDataFragToFrag(user.getLogin());
-                        //We start DetailActivity
-                        startDetailActivity();
+                        //We start DetailActivity after the click an we get the position
+                        startDetailActivity(position);
+
                     }
                 });
     }
@@ -107,14 +101,14 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     @Override
     public void onClickDeleteButton(int position) {
         GithubUser user = adapter.getUser(position);
-        Toast.makeText(getContext(), "You are trying to delete user : "+user.getLogin(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "You are trying to delete user : " + user.getLogin(), Toast.LENGTH_SHORT).show();
     }
 
     // -----------------
     // CONFIGURATION
     // -----------------
 
-    private void configureRecyclerView(){
+    private void configureRecyclerView() {
         this.githubUsers = new ArrayList<>();
         // Create adapter passing in the sample user data
         this.adapter = new GithubUserAdapter(this.githubUsers, Glide.with(this), this);
@@ -124,7 +118,7 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    private void configureSwipeRefreshLayout(){
+    private void configureSwipeRefreshLayout() {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -137,7 +131,7 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     // HTTP (RxJAVA)
     // -------------------
 
-    private void executeHttpRequestWithRetrofit(){
+    private void executeHttpRequestWithRetrofit() {
         this.disposable = GithubStreams.streamFetchUserFollowing("JakeWharton").subscribeWith(new DisposableObserver<List<GithubUser>>() {
             @Override
             public void onNext(List<GithubUser> users) {
@@ -145,14 +139,16 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
             }
 
             @Override
-            public void onError(Throwable e) { }
+            public void onError(Throwable e) {
+            }
 
             @Override
-            public void onComplete() { }
+            public void onComplete() {
+            }
         });
     }
 
-    private void disposeWhenDestroy(){
+    private void disposeWhenDestroy() {
         if (this.disposable != null && !this.disposable.isDisposed()) this.disposable.dispose();
     }
 
@@ -160,7 +156,7 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     // UPDATE UI
     // -------------------
 
-    private void updateUI(List<GithubUser> users){
+    private void updateUI(List<GithubUser> users) {
         githubUsers.clear();
         githubUsers.addAll(users);
         adapter.notifyDataSetChanged();

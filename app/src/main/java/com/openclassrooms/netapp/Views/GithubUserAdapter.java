@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.RequestManager;
 import com.openclassrooms.netapp.Models.GithubUser;
+import com.openclassrooms.netapp.Models.GithubUserInfo;
 import com.openclassrooms.netapp.R;
 
 import java.util.List;
@@ -62,4 +63,5 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
     public GithubUser getUser(int position){
         return this.githubUsers.get(position);
     }
+
 }
