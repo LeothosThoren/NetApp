@@ -1,4 +1,4 @@
-package com.openclassrooms.netapp.Views;
+package com.leothos.netapp.Views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.openclassrooms.netapp.Models.GithubUser;
-import com.openclassrooms.netapp.R;
+import com.leothos.netapp.Models.GithubUser;
+import com.leothos.netapp.R;
 
 import java.lang.ref.WeakReference;
 

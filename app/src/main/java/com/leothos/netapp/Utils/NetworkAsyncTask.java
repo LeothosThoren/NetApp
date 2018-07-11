@@ -1,4 +1,4 @@
-package com.openclassrooms.netapp.Utils;
+package com.leothos.netapp.Utils;
 
 import android.util.Log;
 

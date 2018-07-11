@@ -1,10 +1,10 @@
-package com.openclassrooms.netapp.Controllers.Activities;
+package com.leothos.netapp.Controllers.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.openclassrooms.netapp.Controllers.Fragments.MainFragment;
-import com.openclassrooms.netapp.R;
+import com.leothos.netapp.Controllers.Fragments.MainFragment;
+import com.leothos.netapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,21 +1,15 @@
 package com.openclassrooms.netapp;
 
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.widget.RecyclerView;
 
 import com.openclassrooms.netapp.Models.GithubUser;
 import com.openclassrooms.netapp.Models.GithubUserInfo;
 import com.openclassrooms.netapp.Utils.GithubStreams;
-import com.openclassrooms.netapp.Views.GithubUserAdapter;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;

@@ -1,4 +1,4 @@
-package com.openclassrooms.netapp.Models;
+package com.leothos.netapp.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

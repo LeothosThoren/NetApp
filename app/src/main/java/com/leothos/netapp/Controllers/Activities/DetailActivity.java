@@ -1,11 +1,11 @@
-package com.openclassrooms.netapp.Controllers.Activities;
+package com.leothos.netapp.Controllers.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
-import com.openclassrooms.netapp.Controllers.Fragments.DetailFragment;
-import com.openclassrooms.netapp.R;
+import com.leothos.netapp.Controllers.Fragments.DetailFragment;
+import com.leothos.netapp.R;
 
 public class DetailActivity extends AppCompatActivity {
 

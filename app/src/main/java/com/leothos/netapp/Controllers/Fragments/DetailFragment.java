@@ -1,4 +1,4 @@
-package com.openclassrooms.netapp.Controllers.Fragments;
+package com.leothos.netapp.Controllers.Fragments;
 
 
 import android.annotation.SuppressLint;
@@ -12,18 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
-import com.openclassrooms.netapp.Models.GithubUserInfo;
-import com.openclassrooms.netapp.R;
-import com.openclassrooms.netapp.Utils.GithubStreams;
+import com.leothos.netapp.Models.GithubUserInfo;
+import com.leothos.netapp.R;
+import com.leothos.netapp.Utils.GithubStreams;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
-import static com.openclassrooms.netapp.Controllers.Activities.DetailActivity.POSITION;
+import static com.leothos.netapp.Controllers.Activities.DetailActivity.POSITION;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,10 +42,9 @@ public class DetailFragment extends Fragment {
     TextView mFollowersNb;
     @BindView(R.id.detail_repos_nb)
     TextView mReposNb;
-
+    Disposable mDisposable;
     //Var
     private int position;
-    Disposable mDisposable;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -62,7 +60,7 @@ public class DetailFragment extends Fragment {
 
         //Retrieve the position within the click from previous fragment
         position = getActivity().getIntent().getIntExtra(POSITION, 0);
-        Log.d(TAG, "onCreateView: show position "+ position);
+        Log.d(TAG, "onCreateView: show position " + position);
 
         //Method request
         this.executeHttpRequestWithRetrofitUserInfo();
@@ -83,7 +81,7 @@ public class DetailFragment extends Fragment {
 
     private void executeHttpRequestWithRetrofitUserInfo() {
         //Note: we use the stream with Map and flatMap option with a minor modification
-        this.mDisposable = GithubStreams.streamFetchUserFollowingAndFetchFirstUserInfos("JakeWharton", position)
+        this.mDisposable = GithubStreams.streamFetchUserFollowingAndFetchFirstUserInfos("LeothosThoren", position)
                 .subscribeWith(new DisposableObserver<GithubUserInfo>() {
                     @Override
                     public void onNext(GithubUserInfo usersInfo) {

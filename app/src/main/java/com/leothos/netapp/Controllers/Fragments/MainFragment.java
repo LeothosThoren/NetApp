@@ -1,4 +1,4 @@
-package com.openclassrooms.netapp.Controllers.Fragments;
+package com.leothos.netapp.Controllers.Fragments;
 
 
 import android.content.Intent;
@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.openclassrooms.netapp.Controllers.Activities.DetailActivity;
-import com.openclassrooms.netapp.Models.GithubUser;
-import com.openclassrooms.netapp.R;
-import com.openclassrooms.netapp.Utils.GithubStreams;
-import com.openclassrooms.netapp.Utils.ItemClickSupport;
-import com.openclassrooms.netapp.Views.GithubUserAdapter;
+import com.leothos.netapp.Controllers.Activities.DetailActivity;
+import com.leothos.netapp.Models.GithubUser;
+import com.leothos.netapp.R;
+import com.leothos.netapp.Utils.GithubStreams;
+import com.leothos.netapp.Utils.ItemClickSupport;
+import com.leothos.netapp.Views.GithubUserAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
-import static com.openclassrooms.netapp.Controllers.Activities.DetailActivity.POSITION;
+import static com.leothos.netapp.Controllers.Activities.DetailActivity.POSITION;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -132,7 +132,7 @@ public class MainFragment extends Fragment implements GithubUserAdapter.Listener
     // -------------------
 
     private void executeHttpRequestWithRetrofit() {
-        this.disposable = GithubStreams.streamFetchUserFollowing("JakeWharton").subscribeWith(new DisposableObserver<List<GithubUser>>() {
+        this.disposable = GithubStreams.streamFetchUserFollowing("LeothosThoren").subscribeWith(new DisposableObserver<List<GithubUser>>() {
             @Override
             public void onNext(List<GithubUser> users) {
                 updateUI(users);

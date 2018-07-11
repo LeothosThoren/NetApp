@@ -1,16 +1,14 @@
-package com.openclassrooms.netapp.Views;
+package com.leothos.netapp.Views;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.RequestManager;
-import com.openclassrooms.netapp.Models.GithubUser;
-import com.openclassrooms.netapp.Models.GithubUserInfo;
-import com.openclassrooms.netapp.R;
+import com.leothos.netapp.Models.GithubUser;
+import com.leothos.netapp.R;
 
 import java.util.List;
 
@@ -20,13 +18,8 @@ import java.util.List;
 
 public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder> {
 
-    public interface Listener {
-        void onClickDeleteButton(int position);
-    }
-
     // FOR COMMUNICATION
     private final Listener callback;
-
     // FOR DATA
     private List<GithubUser> githubUsers;
     private RequestManager glide;
@@ -60,8 +53,12 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserViewHolder
         return this.githubUsers.size();
     }
 
-    public GithubUser getUser(int position){
+    public GithubUser getUser(int position) {
         return this.githubUsers.get(position);
+    }
+
+    public interface Listener {
+        void onClickDeleteButton(int position);
     }
 
 }

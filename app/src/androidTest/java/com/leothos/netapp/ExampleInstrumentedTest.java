@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.openclassrooms.netapp", appContext.getPackageName());
+        assertEquals("com.openclassrooms.com.leothos.netapp", appContext.getPackageName());
     }
 }

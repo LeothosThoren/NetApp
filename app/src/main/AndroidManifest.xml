@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.openclassrooms.netapp">
+    package="com.leothos.netapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controllers.Activities.MainActivity">
+        <activity android:name="com.leothos.netapp.Controllers.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,12 +19,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controllers.Activities.DetailActivity"
+            android:name="com.leothos.netapp.Controllers.Activities.DetailActivity"
             android:label="@string/details_fragment_name">
             <!--Here we add meta to indicate where to go when clicking arrow on action bar-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Controllers.Activities.MainActivity" />
+                android:value="com.leothos.netapp.Controllers.Activities.MainActivity" />
         </activity>
 
     </application>
